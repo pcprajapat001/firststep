@@ -8,6 +8,8 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
+import Demo from "./Demo";
+import PomodoroTimer from "./PomodoroTimer ";
 
 const questions = [
   {
@@ -58,6 +60,10 @@ const Quiz = () => {
         selected: selectedAnswer,
         isCorrect: isCorrect,
       });
+
+      if (isCorrect) {
+        setScore(score + 1); // Update the score when the answer is correct
+      }
     }
   };
 
@@ -164,21 +170,24 @@ const Quiz = () => {
               </Button>
             </Grid>
           </Grid>
-          <div style={{ marginTop: "20px" }}></div>
         </div>
       );
     }
   };
 
   return (
-    <Grid sx={{ marginTop: 2 }} align="center" container spacing={2}>
-      <Grid item xs={4} md={0}></Grid>
-      <Grid item xs={12} sm={4}>
+    <Grid sx={{ marginTop: { md: 1 } }} container spacing={2}>
+      <Grid item xs={4} md={0} sm={2} align="left">
+        <Demo />
+      </Grid>
+      <Grid item xs={12} sm={6}>
         <Card>
           <CardContent>{renderQuizContent()}</CardContent>
         </Card>
       </Grid>
-      <Grid item xs={4}></Grid>
+      <Grid item md={4} xs={12}>
+        <PomodoroTimer />
+      </Grid>
     </Grid>
   );
 };

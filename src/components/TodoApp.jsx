@@ -6,49 +6,98 @@ import {
   Grid,
   TextField,
   Typography,
+  Alert,
+  Box,
+  Container,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete"; // Using a delete icon for better clarity
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import Demo from "./Demo";
 
 const TodoApp = () => {
-  // State to manage input text and list of tasks
   const [text, setText] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [updateIndex, setUpdateIndex] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState("success");
 
-  // Load tasks from localStorage on component mount
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("todoTasks") || "[]");
     setTasks(savedTasks);
   }, []);
 
-  // Add a new task to the list and save to localStorage
   const handleAdd = () => {
-    const newTasks = [...tasks, text];
+    let newTasks;
+
+    if (updateIndex !== null) {
+      newTasks = [...tasks];
+      newTasks[updateIndex] = text;
+      showAlertMessage("Task updated");
+    } else {
+      newTasks = [...tasks, text];
+      showAlertMessage("Task added");
+    }
+
     setTasks(newTasks);
     setText("");
+    setUpdateIndex(null);
     saveTasksToLocalStorage(newTasks);
   };
 
-  // Delete a task from the list and save to localStorage
   const handleDelete = (index) => {
     const filteredTasks = tasks.filter((_, ind) => ind !== index);
     setTasks(filteredTasks);
+    setUpdateIndex(null);
     saveTasksToLocalStorage(filteredTasks);
+    showAlertMessage("Task deleted", "error");
   };
 
-  // Save tasks to localStorage
+  const handleUpdate = (index) => {
+    setUpdateIndex(index);
+    setText(tasks[index]);
+    showAlertMessage("Editing task");
+  };
+
+  const showAlertMessage = (message, severity = "success") => {
+    setAlertMessage(message);
+    setAlertSeverity(severity);
+    setShowAlert(true);
+
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  };
+
   const saveTasksToLocalStorage = (tasksToSave) => {
     localStorage.setItem("todoTasks", JSON.stringify(tasksToSave));
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Grid container spacing={2}>
-          {/* Center content */}
-          <Grid item xs={12} sm={8} md={6}>
+    <Container
+      style={{
+        background:
+          "linear-gradient(to bottom left, #33ccff 10%, #000099 100%)",
+      }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box sm={12} sx={{ width: "900px" }}>
+        <Typography align="center" variant="h4">
+          To do App
+        </Typography>
+        <Card
+          style={{
+            background:
+              "linear-gradient(to bottom left, #33ccff 10%, #000099 100%)",
+          }}
+        >
+          <CardContent>
             <Grid container spacing={2}>
-              {/* Input for adding a new task */}
-              <Grid item xs={8}>
+              <Grid item xs={12} md={8}>
                 <TextField
                   onChange={(e) => setText(e.target.value)}
                   value={text}
@@ -57,47 +106,63 @@ const TodoApp = () => {
                   variant="outlined"
                 />
               </Grid>
-              {/* Button to add a new task */}
-              <Grid item xs={4}>
+              <Grid sm={12} item xs={6} md={2}>
                 <Button
                   onClick={handleAdd}
                   fullWidth
                   variant="contained"
                   color="primary"
+                  sx={{ height: 55 }}
+                  disabled={text.length === 0}
                 >
-                  Add
+                  {updateIndex !== null ? "Update" : "Add"}
                 </Button>
               </Grid>
-            </Grid>
 
-            {/* Displaying the list of tasks */}
-            {tasks.map((task, index) => (
-              <Card key={index} sx={{ margin: 2, textAlign: "left" }}>
-                <CardContent>
-                  <Grid container spacing={2}>
-                    {/* Task text */}
-                    <Grid item xs={8}>
-                      <Typography>{task}</Typography>
-                    </Grid>
-                    {/* Button to delete a task */}
-                    <Grid item xs={4}>
-                      <Button
-                        onClick={() => handleDelete(index)}
-                        variant="contained"
-                        color="error"
-                        startIcon={<DeleteIcon />}
-                      >
-                        Delete
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
-            ))}
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+              {tasks.map((task, index) => (
+                <Grid key={index} item xs={12}>
+                  <Card sx={{ textAlign: "left" }}>
+                    <CardContent>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} md={8}>
+                          <Typography>{task}</Typography>
+                        </Grid>
+                        <Grid item xs={6} md={2}>
+                          <Button
+                            onClick={() => handleUpdate(index)}
+                            variant="contained"
+                            color="warning"
+                            startIcon={<ModeEditIcon />}
+                            fullWidth
+                            sx={{ width: "10px" }}
+                          ></Button>
+                        </Grid>
+                        <Grid item xs={6} md={2}>
+                          <Button
+                            onClick={() => handleDelete(index)}
+                            variant="contained"
+                            color="error"
+                            startIcon={<DeleteIcon />}
+                            fullWidth
+                            sx={{ width: "10px" }}
+                          ></Button>
+                        </Grid>
+                      </Grid>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </CardContent>
+
+          {showAlert && (
+            <Alert severity={alertSeverity} sx={{ marginTop: 2 }}>
+              {alertMessage}
+            </Alert>
+          )}
+        </Card>
+      </Box>
+    </Container>
   );
 };
 
