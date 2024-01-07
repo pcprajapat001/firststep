@@ -14,9 +14,72 @@ import { FaGoogle } from "react-icons/fa6";
 import { RiLinkedinFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const Singin = () => {
+const SinginNew = () => {
   return (
     <Grid sx={{ height: "100vh" }} align="center" container spacing={2}>
+      <Grid
+        item
+        xs={6}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "80%",
+          marginTop: 6,
+        }}
+      >
+        <Typography variant="h4" align="center">
+          Sign up
+        </Typography>
+        <TextField
+          placeholder="Enter Your Username"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
+        <TextField
+          placeholder="Enter Your Email ID"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
+        <TextField
+          placeholder="Enter Your Password"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
+        <TextField
+          placeholder="Confirm Password"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
+        <Button
+          align="center"
+          sx={{
+            marginTop: 1,
+            height: 40,
+            align: "center",
+            borderRadius: 10,
+          }}
+          variant="contained"
+        >
+          Signup
+        </Button>
+        <Link to="/signin">
+          <Typography color="blue" variant="h6" align="center">
+            or Log In with
+          </Typography>
+        </Link>
+        <Grid item xs={12}>
+          <FaFacebookF size={20} className="icon" />
+          <FaGoogle size={20} className="icon" />
+          <RiLinkedinFill size={20} className="icon" />
+        </Grid>
+      </Grid>
+
       <Grid item xs={6} sx={{ backgroundColor: "" }}>
         <Card
           sx={{
@@ -35,72 +98,20 @@ const Singin = () => {
           <CardContent>
             <img
               align="center"
-              width={400}
+              width={200}
               justifyContent="center"
-              height={400}
-              src="/login.png"
+              height={200}
+              src="/signup.png"
               alt=""
             />
             <Typography align="center" justifyContent="center" variant="h3">
-              Let's Login...
+              Come join us!!
             </Typography>
           </CardContent>
         </Card>
-      </Grid>
-
-      <Grid
-        item
-        xs={6}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "80%",
-          marginTop: 6,
-        }}
-      >
-        <Typography variant="h4" align="center">
-          Log in
-        </Typography>
-        <TextField
-          placeholder="Enter Your Username"
-          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
-          fullWidth
-          variant="outlined"
-        />
-        <TextField
-          placeholder="Enter Your password"
-          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
-          fullWidth
-          variant="outlined"
-        />
-
-        <Button
-          align="center"
-          sx={{
-            marginTop: 1,
-            height: 40,
-            align: "center",
-            borderRadius: 10,
-          }}
-          variant="contained"
-        >
-          login
-        </Button>
-        <Link to="/signup">
-          <Typography color="blue" variant="h6" align="center">
-            or Sign up
-          </Typography>
-        </Link>
-        <Grid item xs={12}>
-          <FaFacebookF size={20} className="icon" />
-          <FaGoogle size={20} className="icon" />
-          <RiLinkedinFill size={20} className="icon" />
-        </Grid>
       </Grid>
     </Grid>
   );
 };
 
-export default Singin;
+export default SinginNew;

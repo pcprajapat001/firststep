@@ -249,3 +249,34 @@ export const books = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUitMnJT5hJ_Xvra1f3vfCfA3jqwHTbUkGaw&usqp=CAU",
   },
 ];
+export const books2 = [
+  {
+    id: 1,
+    title: "Book 1",
+    author: "Author 1",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg9kzvF1o17VDHj26uXcYVuu3NWmrI8SsjNw&usqp=CAU",
+  },
+  {
+    id: 1,
+    title: "Book 1",
+    author: "Author 1",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUitMnJT5hJ_Xvra1f3vfCfA3jqwHTbUkGaw&usqp=CAU",
+  },
+
+  {
+    id: 1,
+    title: "Book 1",
+    author: "Author 1",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxjJXqSpPavGePecq-Dw0X6IuzhDOH2Hz9-Q&usqp=CAU",
+  },
+  {
+    id: 1,
+    title: "Book 1",
+    author: "Author 1",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxjJXqSpPavGePecq-Dw0X6IuzhDOH2Hz9-Q&usqp=CAU",
+  },
+];

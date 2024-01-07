@@ -6,6 +6,7 @@ const TodoNew = () => {
   return (
     <Grid
       container
+      sx={{ minHeight: "100vh" }}
       align="center"
       spacing={2}
       style={{

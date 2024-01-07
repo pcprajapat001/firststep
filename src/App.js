@@ -10,7 +10,8 @@ import TicTacToe from "./components/TicTacToe";
 import PomodoroTimer from "./components/PomodoroTimer ";
 import Home from "./components/Home";
 import TodoNew from "./components/TodoNew";
-import AuthForm from "./components/AuthForm";
+import Singin from "./components/Singin";
+import SignUpForm from "./components/SignUpForm";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path="/article" element={<Article />} />
         <Route path="/pomodoro" element={<PomodoroTimer />} />
         <Route path="/games" element={<TicTacToe />} />
-        <Route path="/login" element={<AuthForm />} />
+        <Route path="/login" element={<Singin />} />
+        <Route path="/signup" element={<SignUpForm />} />
       </Routes>
     </BrowserRouter>
   );

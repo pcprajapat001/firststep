@@ -1,120 +1,58 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// import "./RoundCarousel.css";
 
 const MyComponent = () => {
+  const images = [
+    "html.png",
+    "css.png",
+    "js.png",
+    "react.png",
+    "boot.png",
+    "mui.png",
+    "html.png",
+    "css.png",
+    "js.png",
+    "react.png",
+    "boot.png",
+    "mui.png",
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 8, // Display 6 images at a time
+    slidesToScroll: 1, // Scroll through 6 images at a time
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
-    <Grid container spacing={2} sx={{ padding: 5 }}>
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 1"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 1
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 1.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 2"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 2
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 2.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 2"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 2
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 2.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 2"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 2
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 2.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 2"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 2
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 2.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={2}>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://placekitten.com/200/140"
-            alt="Card Image 2"
-          />
-          <CardContent>
-            <Typography variant="h6" component="div">
-              Card 2
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Content for Card 2.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    </Grid>
+    <Container>
+      <Paper
+        sx={{ bgcolor: "inherit" }}
+        elevation={3}
+        className="carousel-container"
+      >
+        <Slider {...settings}>
+          {images.map((image, index) => (
+            <Paper
+              sx={{ borderRadius: "50%" }}
+              key={index}
+              className="carousel-item"
+              elevation={3}
+            >
+              <img src={image} alt={`Image ${index + 1}`} />
+            </Paper>
+          ))}
+        </Slider>
+      </Paper>
+    </Container>
   );
 };
 

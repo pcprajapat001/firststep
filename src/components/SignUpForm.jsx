@@ -14,40 +14,9 @@ import { FaGoogle } from "react-icons/fa6";
 import { RiLinkedinFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const Singin = () => {
+const SignUpForm = () => {
   return (
     <Grid sx={{ height: "100vh" }} align="center" container spacing={2}>
-      <Grid item xs={6} sx={{ backgroundColor: "" }}>
-        <Card
-          sx={{
-            fontWeight: 600,
-            color: "white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-
-            backgroundColor: "blue",
-            height: "80vh",
-            margin: 2,
-            borderRadius: "20px 0 0 20px",
-          }}
-        >
-          <CardContent>
-            <img
-              align="center"
-              width={400}
-              justifyContent="center"
-              height={400}
-              src="/login.png"
-              alt=""
-            />
-            <Typography align="center" justifyContent="center" variant="h3">
-              Let's Login...
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-
       <Grid
         item
         xs={6}
@@ -61,7 +30,7 @@ const Singin = () => {
         }}
       >
         <Typography variant="h4" align="center">
-          Log in
+          Sign up
         </Typography>
         <TextField
           placeholder="Enter Your Username"
@@ -70,12 +39,23 @@ const Singin = () => {
           variant="outlined"
         />
         <TextField
-          placeholder="Enter Your password"
+          placeholder="Enter Your Email ID"
           sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
           fullWidth
           variant="outlined"
         />
-
+        <TextField
+          placeholder="Enter Your Password"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
+        <TextField
+          placeholder="Confirm Password"
+          sx={{ padding: "0 30px 0 50px", width: 500, marginTop: 1 }}
+          fullWidth
+          variant="outlined"
+        />
         <Button
           align="center"
           sx={{
@@ -86,11 +66,11 @@ const Singin = () => {
           }}
           variant="contained"
         >
-          login
+          Signup
         </Button>
-        <Link to="/signup">
+        <Link to="/login">
           <Typography color="blue" variant="h6" align="center">
-            or Sign up
+            or Log In with
           </Typography>
         </Link>
         <Grid item xs={12}>
@@ -99,8 +79,39 @@ const Singin = () => {
           <RiLinkedinFill size={20} className="icon" />
         </Grid>
       </Grid>
+
+      <Grid item xs={6} sx={{ backgroundColor: "" }}>
+        <Card
+          sx={{
+            fontWeight: 600,
+            color: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
+            backgroundColor: "blue",
+            height: "80vh",
+            margin: 2,
+            borderRadius: "0px 20px 20px 0px",
+          }}
+        >
+          <CardContent>
+            <img
+              align="center"
+              width={400}
+              justifyContent="center"
+              height={400}
+              src="/signup.png"
+              alt=""
+            />
+            <Typography align="center" justifyContent="center" variant="h3">
+              Come join us!!
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grid>
   );
 };
 
-export default Singin;
+export default SignUpForm;

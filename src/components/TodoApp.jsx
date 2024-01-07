@@ -83,9 +83,10 @@ const TodoApp = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        minHeight: "80vh",
       }}
     >
-      <Box sm={12} sx={{ width: "900px" }}>
+      <Box sm={12} sx={{ width: "900px", marginTop: 1 }}>
         <Typography align="center" variant="h4">
           To do App
         </Typography>

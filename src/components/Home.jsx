@@ -1,6 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import MyComponent from "./MyComponent";
+import Footer from "./Footer";
+import HomeArticel from "./HomeArticel";
 
 const Home = () => {
   return (
@@ -38,6 +40,8 @@ const Home = () => {
         </Grid>
       </Grid>
       <MyComponent />
+      <HomeArticel />
+      <Footer />
     </Grid>
   );
 };
